@@ -136,10 +136,10 @@ typedef struct{
 *	Vehicle Identification Number according ISO 3779
 */
 typedef struct{
-	char isowmi[ISO_WMI_SIZE];						/* isowmi			: World Manufacturer Index,		PrintableString (SIZE(3)) FROM ("A".."H"|"J".."N"|"P"|"R".."Z"|"0".."9") */
-	char isovds[ISO_VDS_SIZE];						/* isovds			: Vehicle Type Descriptor,		PrintableString (SIZE(6)) FROM ("A".."H"|"J".."N"|"P"|"R".."Z"|"0".."9") */
-	char isovisModelyear[ISO_VDS_MODEL_YEAR_SIZE];	/* isovisModelyear	: Vehicle Identifier Sectino,	PrintableString (SIZE(1)) FROM ("A".."H"|"J".."N"|"P"|"R".."Z"|"0".."9") */
-	char isovisSeqPlant[ISO_VDS_SEQ_PLANT_SIZE];	/* isovisSeqPlant	: Vehicle Identifier Sectino,	PrintableString (SIZE(7)) FROM ("A".."H"|"J".."N"|"P"|"R".."Z"|"0".."9") */
+	char const * isowmi;						/* isowmi			: World Manufacturer Index,		PrintableString (SIZE(3)) FROM ("A".."H"|"J".."N"|"P"|"R".."Z"|"0".."9") */
+	char const * isovds;						/* isovds			: Vehicle Type Descriptor,		PrintableString (SIZE(6)) FROM ("A".."H"|"J".."N"|"P"|"R".."Z"|"0".."9") */
+	char const * isovisModelyear;	/* isovisModelyear	: Vehicle Identifier Sectino,	PrintableString (SIZE(1)) FROM ("A".."H"|"J".."N"|"P"|"R".."Z"|"0".."9") */
+	char const * isovisSeqPlant;	/* isovisSeqPlant	: Vehicle Identifier Sectino,	PrintableString (SIZE(7)) FROM ("A".."H"|"J".."N"|"P"|"R".."Z"|"0".."9") */
 }tVehicleIdentificationNumber;						/* According ISO 3779 */
 
 /**
@@ -194,8 +194,8 @@ typedef struct{
 
 typedef struct{
 	uint8_t oidLength;
-	uint8_t *oid;
 	uint8_t dataLength;
+	uint8_t *oid;
 	uint8_t *data;
 }tAdditionalData;
 

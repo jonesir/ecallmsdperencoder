@@ -1,4 +1,4 @@
-#include "ecall_defines.h"
+#include "ecall_msd_per_encoder.h"
 
 /**
 * static global variables
@@ -171,7 +171,6 @@ uint8_t encodeMSD( tECallMessage *eCallMessage, uint8_t *msdAsByte )
 	/* recentVehicleLocationN1 */
 	if ( msdStructure.recentVehicleLocationN1Avlb )
 	{
-		tVehicleLocationDelta recentVehicleLocationN1 = msdStructure.recentVehicleLocationN1;
 		/* latitudeDelta */
 		/* it has 1024 possible values, require thus at least 10 bits for the encoding, 2^9 < 1024 <= 2^10 */
 		appendBits( msdAsByte, msdStructure.recentVehicleLocationN1.latitudeDelta + R_LOCATION_LAT_LON_OFFSET_COMPENSATE, 10 );
@@ -183,10 +182,9 @@ uint8_t encodeMSD( tECallMessage *eCallMessage, uint8_t *msdAsByte )
 	/* recentVehicleLocationN2 */
 	if ( msdStructure.recentVehicleLocationN2Avlb )
 	{
-		tVehicleLocationDelta recentVehicleLocationN2 = msdStructure.recentVehicleLocationN2;
 		/* latitudeDelta */
 		/* it has 1024 possible values, require thus at least 10 bits for the encoding, 2^9 < 1024 <= 2^10 */
-		appendBits( msdAsByte, msdStructure.recentVehicleLocationN1.latitudeDelta + R_LOCATION_LAT_LON_OFFSET_COMPENSATE, 10 );
+		appendBits( msdAsByte, msdStructure.recentVehicleLocationN2.latitudeDelta + R_LOCATION_LAT_LON_OFFSET_COMPENSATE, 10 );
 		/* longitudeDelta */
 		/* it has 1024 possible values, require thus at least 10 bits for the encoding, 2^9 < 1024 <= 2^10 */
 		appendBits( msdAsByte, msdStructure.recentVehicleLocationN2.longitudeDelta + R_LOCATION_LAT_LON_OFFSET_COMPENSATE, 10 );

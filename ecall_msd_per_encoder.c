@@ -259,7 +259,7 @@ void appendBits( uint8_t *msdAsByte, uint32_t src, uint8_t length )
 	else
 	{
 		/* unconsumed bits left in the byte NOT enough for bits to be appended, thus more new byte will be required */
-		msdAsByte[byteIndex] |= ( src >> length - position ) & 0xFF;
+		msdAsByte[byteIndex] |= ( src >> (length - position) ) & 0xFF;
 		updateIndexes ( bitIndex );
 		appendBits( msdAsByte, src, length - position );
 	}
